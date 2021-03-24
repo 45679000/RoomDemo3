@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+            <variable
+                name="myViewModel"
+                type="com.example.roomdemo3.SubscriberViewModel" />
+    </data>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <EditText
+        android:id="@+id/name_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginBottom="5dp"
+        android:ems="10"
+        android:text="@={myViewModel.inputName}"
+        android:hint="@string/subscribers_name"
+        android:inputType="textPersonName"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:autofillHints="name" />
+
+    <EditText
+        android:id="@+id/email_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:ems="10"
+        android:text="@={myViewModel.inputEmail}"
+        android:hint="@string/subscriber_email"
+        android:inputType="textPersonName|textEmailAddress"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:autofillHints="email" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/safe_or_update_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@={myViewModel.safeOrUpdateButtonText}"
+            android:onClick="@{()-> myViewModel.safeOrUpdate()}"
+            style="?attr/materialButtonOutlinedStyle"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/clear_or_delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_weight="1"
+            android:text="@={myViewModel.clearAllOrDeleteButtonText}"
+            android:onClick="@{()-> myViewModel.clearALlOrDelete()}"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/subscriber_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp" />
+
+
+    </LinearLayout>
+</layout>
